@@ -10,13 +10,16 @@ public class QapSavingsGoal {
 
     private String goalImageURL;
     private int userId;
+    // TODO: optional
     private double targetAmount;
     private double currentBalance;
+    // TODO: ?
     private List<Integer> created;
     private QapStatus status;
     private String name;
     // TODO: Whats this?
     private int id;
+    // TODO: optional
     // TODO: @SerializedName
 //    private List<Integer> connectedUserIds;
     private List<Integer> connectedUsers;
