@@ -7,6 +7,8 @@ import com.pha.qapital.network.QapAPICallback;
 import com.pha.qapital.network.QapAPIError;
 import com.pha.qapital.network.QapNetworkManager;
 import com.pha.qapital.network.models.wrappers.QapSavingsGoalsWrapper;
+import com.pha.qapital.ui.ItemFragment;
+import com.pha.qapital.ui.dummy.DummyContent;
 
 import timber.log.Timber;
 
@@ -14,7 +16,7 @@ import timber.log.Timber;
  * Created by pha on 2017-12-02.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
                 Timber.d("onFailure");
             }
         });
-        Timber.d("WTF");
+    }
+
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+
     }
 }
