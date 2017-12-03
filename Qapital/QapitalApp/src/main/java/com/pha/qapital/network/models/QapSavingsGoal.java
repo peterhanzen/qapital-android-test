@@ -12,7 +12,7 @@ public class QapSavingsGoal {
     private int userId;
     private double targetAmount;
     private double currentBalance;
-    private QapTime created;
+    private List<Integer> created;
     private QapStatus status;
     private String name;
     // TODO: Whats this?

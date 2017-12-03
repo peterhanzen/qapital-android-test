@@ -10,6 +10,10 @@ import com.pha.qapital.network.models.wrappers.QapSavingsGoalsWrapper;
 
 import timber.log.Timber;
 
+/**
+ * Created by pha on 2017-12-02.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -25,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         QapNetworkManager.getInstance(this).getApiClient().getSavingsGoals(new QapAPICallback<QapSavingsGoalsWrapper>() {
             @Override
             public void onSuccess(QapSavingsGoalsWrapper response) {
-                System.out.println("onSuccess");
                 Timber.d(response.toString());
             }
 

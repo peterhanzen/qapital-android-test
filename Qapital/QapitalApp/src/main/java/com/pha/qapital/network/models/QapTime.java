@@ -11,6 +11,7 @@ public class QapTime {
     private List<Integer> created;
 
     // TODO: getYear asf
+    // TODO: Custom deserializer?
 //            "created": [
 //                    2014,
 //                    12,
