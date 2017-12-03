@@ -10,5 +10,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.pha.qapital.ui.ItemFragment"
-    tools:listitem="@layout/fragment_item"/>
+    tools:context="com.pha.qapital.ui.SavingsGoalsFragment"
+    tools:listitem="@layout/savings_goals_list_item"/>

@@ -11,7 +11,7 @@ import timber.log.Timber;
 
 public class JsonUtil {
 
-    public static final String EMPTY_JSON = "{}";
+    private static final String EMPTY_JSON = "{}";
 
     private static Gson gson = new Gson();
 
@@ -20,7 +20,6 @@ public class JsonUtil {
     }
 
     public static String toJsonString(Object object) {
-
         if (object != null) return gson.toJson(object);
         return EMPTY_JSON;
     }

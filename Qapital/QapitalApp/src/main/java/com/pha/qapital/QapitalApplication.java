@@ -1,7 +1,6 @@
 package com.pha.qapital;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.facebook.stetho.Stetho;
 
@@ -13,24 +12,12 @@ import timber.log.Timber;
 
 public class QapitalApplication extends Application {
 
-    private static Context appContext;
-
     @Override
     public void onCreate() {
         super.onCreate();
-        appContext = getApplicationContext();
-//        initCalligraphy();
         initTimber();
         initStetho();
-//        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
-
-//    private void initCalligraphy() {
-//        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-//                .setDefaultFontPath("fonts/FuturaEF-DemiBold.otf")
-//                .setFontAttrId(R.attr.fontPath)
-//                .build());
-//    }
 
     private void initTimber() {
         if (BuildConfig.DEBUG) {
@@ -45,13 +32,9 @@ public class QapitalApplication extends Application {
     }
 
     private void initStetho() {
-//        if (BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             Stetho.initializeWithDefaults(this);
-//        }
-    }
-
-    public static Context getAppContext() {
-        return appContext;
+        }
     }
 
 }

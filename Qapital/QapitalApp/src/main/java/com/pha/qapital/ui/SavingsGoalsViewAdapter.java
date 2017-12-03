@@ -8,22 +8,16 @@ import android.widget.TextView;
 
 import com.pha.qapital.R;
 import com.pha.qapital.network.models.QapSavingsGoal;
-import com.pha.qapital.ui.ItemFragment.OnListFragmentInteractionListener;
-import com.pha.qapital.ui.dummy.DummyContent.DummyItem;
+import com.pha.qapital.ui.SavingsGoalsFragment.OnListFragmentInteractionListener;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
-public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
+public class SavingsGoalsViewAdapter extends RecyclerView.Adapter<SavingsGoalsViewAdapter.ViewHolder> {
 
     private final List<QapSavingsGoal> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyItemRecyclerViewAdapter(List<QapSavingsGoal> items, OnListFragmentInteractionListener listener) {
+    public SavingsGoalsViewAdapter(List<QapSavingsGoal> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -31,7 +25,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_item, parent, false);
+                .inflate(R.layout.savings_goals_list_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -44,9 +38,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
+                if (mListener != null) {
                     mListener.onListFragmentInteraction(holder.mItem);
                 }
             }
