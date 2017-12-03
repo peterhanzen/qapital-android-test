@@ -17,11 +17,17 @@ public class QapSavingsGoal {
     private List<Integer> created;
     private QapStatus status;
     private String name;
-    // TODO: Whats this?
     private int id;
     // TODO: optional
     // TODO: @SerializedName
 //    private List<Integer> connectedUserIds;
     private List<Integer> connectedUsers;
 
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
+    }
 }

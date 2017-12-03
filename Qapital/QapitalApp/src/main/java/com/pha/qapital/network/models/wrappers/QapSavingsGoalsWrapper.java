@@ -10,6 +10,6 @@ import java.util.List;
 
 public class QapSavingsGoalsWrapper {
 
-    List<QapSavingsGoal> savingsGoals;
+    public List<QapSavingsGoal> savingsGoals;
 
 }
