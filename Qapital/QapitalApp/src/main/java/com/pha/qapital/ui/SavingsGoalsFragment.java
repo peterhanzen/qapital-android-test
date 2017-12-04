@@ -10,23 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.pha.qapital.R;
-import com.pha.qapital.network.QapAPICallback;
-import com.pha.qapital.network.QapAPIError;
-import com.pha.qapital.network.QapNetworkManager;
+import com.pha.qapital.network.QapAPIClient;
 import com.pha.qapital.network.models.QapSavingsGoal;
 import com.pha.qapital.network.models.wrappers.QapSavingsGoalsWrapper;
 import com.pha.qapital.util.JsonUtil;
 
 import java.util.List;
 
-import timber.log.Timber;
-
 /**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
+ * Created by pha on 2017-12-03.
  */
+
 public class SavingsGoalsFragment extends Fragment {
 
     private static final String TAG = SavingsGoalsFragment.class.getName();
@@ -89,15 +83,10 @@ public class SavingsGoalsFragment extends Fragment {
 
     private void getSavingsGoals(final RecyclerView recyclerView) {
         super.onStart();
-        QapNetworkManager.getInstance(getContext()).getApiClient().getSavingsGoals(new QapAPICallback<QapSavingsGoalsWrapper>() {
+        QapAPIClient.getInstance().getSavingsGoals(new QapAPIClient.QapAPICallback<QapSavingsGoalsWrapper>() {
             @Override
             public void onSuccess(QapSavingsGoalsWrapper response) {
                 recyclerView.setAdapter(new SavingsGoalsViewAdapter(response.savingsGoals, mListener));
-            }
-
-            @Override
-            public void onFailure(QapAPIError stapiError) {
-                Timber.d("onFailure");
             }
         });
     }

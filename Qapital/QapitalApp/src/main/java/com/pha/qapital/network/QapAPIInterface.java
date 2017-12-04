@@ -12,7 +12,6 @@ import retrofit2.http.GET;
 public interface QapAPIInterface {
 
     @GET("/savingsgoals")
-//    Call<QapSavingsGoalsWrapper> getSavingsGoals();
     Observable<QapSavingsGoalsWrapper> getSavingsGoals();
 
 }

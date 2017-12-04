@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="api_base_url" translatable="false">http://10.0.2.2:8080</string>
-    <string name="user_status_active">active</string>
-</resources>
