@@ -2,7 +2,7 @@ package com.pha.qapital.network;
 
 import com.pha.qapital.network.models.wrappers.QapSavingsGoalsWrapper;
 
-import retrofit2.Call;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 
 /**
@@ -12,6 +12,7 @@ import retrofit2.http.GET;
 public interface QapAPIInterface {
 
     @GET("/savingsgoals")
-    Call<QapSavingsGoalsWrapper> getSavingsGoals();
-//    Observable<QapSavingsGoal> getSavingsGoals();
+//    Call<QapSavingsGoalsWrapper> getSavingsGoals();
+    Observable<QapSavingsGoalsWrapper> getSavingsGoals();
+
 }
