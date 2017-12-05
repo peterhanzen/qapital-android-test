@@ -48,10 +48,7 @@ public class SavingsGoalsViewAdapter extends RecyclerView.Adapter<SavingsGoalsVi
         Picasso
                 .with(MainActivity.activity)
                 .load("http://i.imgur.com/DvpvklR.png")
-//                .placeholder(R.drawable.placeholder)
-//                .error(R.drawable.error)
                 .fit()
-//                .tag(context)
                 .into(holder.mGoalImage);
 
 //        Picasso.with(holder.mView.getContext()).load("http://i.imgur.com/DvpvklR.png").into(holder.mGoalImage);

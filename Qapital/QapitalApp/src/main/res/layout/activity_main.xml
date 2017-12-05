@@ -9,14 +9,14 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:src="@mipmap/ic_launcher"/>
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:src="@mipmap/ic_launcher"/>
+
+    <fragment android:name="com.pha.qapital.ui.SavingsGoalsFragment"
+        android:id="@+id/asdf"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>
 
@@ -35,10 +35,6 @@
         <!--android:layout_height="wrap_content"-->
         <!--app:srcCompat="@mipmap/ic_launcher"/>-->
 
-    <!--<fragment android:name="com.pha.qapital.ui.SavingsGoalsFragment"-->
-              <!--android:id="@+id/asdf"-->
-              <!--android:layout_width="match_parent"-->
-              <!--android:layout_height="match_parent" />-->
 
     <!--<TextView-->
         <!--android:layout_width="wrap_content"-->

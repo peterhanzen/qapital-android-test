@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/goalImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="500dp"
+            android:layout_height="500dp"
             app:srcCompat="@android:drawable/arrow_up_float"/>
 
         <TextView
