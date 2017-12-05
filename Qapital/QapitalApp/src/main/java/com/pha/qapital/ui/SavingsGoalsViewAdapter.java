@@ -15,8 +15,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import timber.log.Timber;
-
 public class SavingsGoalsViewAdapter extends RecyclerView.Adapter<SavingsGoalsViewAdapter.ViewHolder> {
 
     private final List<QapSavingsGoal> savingsGoals;
@@ -37,77 +35,21 @@ public class SavingsGoalsViewAdapter extends RecyclerView.Adapter<SavingsGoalsVi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+        // TODO: 2017-12-05 Remove? Set elsewhere or remove entirely?
         holder.mItem = savingsGoals.get(position);
-        Timber.d("Picasso");
 
-        // TODO: 2017-12-05 Context
-        // TODO: 2017-12-05 setLogging only once
         Picasso
-                .with(MainActivity.activity)
-                .setLoggingEnabled(true);
-        Picasso
-                .with(MainActivity.activity)
+                .with(context)
+                // TODO: 2017-12-05 Use proper url and remove
                 .load("http://i.imgur.com/DvpvklR.png")
+//                .load(holder.mItem.getGoalImageURL())
+                // TODO: 2017-12-05 centerCrop() and centerInsideI() don't work, but might be better?
                 .fit()
                 .into(holder.mGoalImage);
 
-//        Picasso.with(holder.mView.getContext()).load("http://i.imgur.com/DvpvklR.png").into(holder.mGoalImage);
 
-        // TODO: 2017-12-05 Dont set logging here
-//        Picasso
-//                .with(context)
-//                .setIndicatorsEnabled(true);
-//        Picasso
-//                .with(context)
-//                .setLoggingEnabled(true);
-//        Picasso
-//                .with(context)
-//                .load("https://en.wikipedia.org/wiki/Portable_Network_Graphics#/media/File:PNG_transparency_demonstration_1.png")
-////                .load("https://thegoldwater.com/static/media_store/c74461ae2a9917a2482ac7b53f195b3c6e2fdd59e778c673256fb29d1b07f181.jpg")
-//                .into(holder.mGoalImage, new Callback() {
-//                    @Override
-//                    public void onSuccess() {
-//                        Timber.d("onSuccess");
-////                        holder.mMediaEvidencePb.setVisibility(View.GONE);
-//                    }
-//
-//                    @Override
-//                    public void onError() {
-//                        Timber.d("onError");
-//                    }
-//                });
-
-//        Picasso.Builder builder = new Picasso.Builder(context);
-//        builder.listener(new Picasso.Listener()
-//        {
-//            @Override
-//            public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception)
-//            {
-//                exception.printStackTrace();
-//            }
-//        });
-//        builder.build()
-//                .load("https://thegoldwater.com/static/media_store/c74461ae2a9917a2482ac7b53f195b3c6e2fdd59e778c673256fb29d1b07f181.jpg")
-////                .load(holder.mItem.getGoalImageURL())
-//                .into(holder.mGoalImage, new Callback() {
-//                    @Override
-//                    public void onSuccess() {
-//                        Timber.d("onSuccess");
-////                        holder.mMediaEvidencePb.setVisibility(View.GONE);
-//                    }
-//
-//                    @Override
-//                    public void onError() {
-//                        Timber.d("onError");
-//                    }
-//                });
-
-//        builder.build().load("file://1bbf030a-94c6-4ded-bfcc-150335b2df26.jpg").into(holder.mGoalImage);
-//        Picasso.with(context).load("a1bbf030a-94c6-4ded-bfcc-150335b2df26.jpg").into(holder.mGoalImage);
-//        Picasso.with(context).load(holder.mItem.getGoalImageURL()).into(holder.mGoalImage);
-
-        holder.mIdView.setText("" + savingsGoals.get(position).getId());
         holder.mContentView.setText(savingsGoals.get(position).getName());
+        holder.mgoalCompletion.setText(getGoalCompletionString(savingsGoals.get(position)));
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +61,17 @@ public class SavingsGoalsViewAdapter extends RecyclerView.Adapter<SavingsGoalsVi
         });
     }
 
+    // TODO: 2017-12-05 Extract strings
+    private String getGoalCompletionString(QapSavingsGoal savingsGoal) {
+        final int currentBalance = savingsGoal.getCurrentBalance();
+        final int targetAmount = savingsGoal.getTargetAmount();
+        final String goalCompletion = "$" + currentBalance + " of " + targetAmount;
+        String comment = "";
+        if (targetAmount == 0) comment = "  You ought to aim higher";
+        else if (currentBalance >= targetAmount) comment = "  Well done (:";
+        return goalCompletion + comment;
+    }
+
     @Override
     public int getItemCount() {
         return savingsGoals.size();
@@ -127,15 +80,16 @@ public class SavingsGoalsViewAdapter extends RecyclerView.Adapter<SavingsGoalsVi
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final ImageView mGoalImage;
-        public final TextView mIdView;
         public final TextView mContentView;
+        public final TextView mgoalCompletion;
+        // TODO: 2017-12-05 Remove?
         public QapSavingsGoal mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mGoalImage = (ImageView) view.findViewById(R.id.goalImage);
-            mIdView = (TextView) view.findViewById(R.id.id);
+            mgoalCompletion = (TextView) view.findViewById(R.id.goalCompletion);
             mContentView = (TextView) view.findViewById(R.id.content);
         }
 

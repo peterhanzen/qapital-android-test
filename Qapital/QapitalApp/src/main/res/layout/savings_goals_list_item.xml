@@ -4,6 +4,8 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:layout_margin="@dimen/savings_goal_margin"
+              android:background="@drawable/background_with_shadow"
               android:orientation="vertical">
 
     <RelativeLayout
@@ -12,32 +14,29 @@
 
         <ImageView
             android:id="@+id/goalImage"
-            android:layout_width="500dp"
-            android:layout_height="500dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             app:srcCompat="@android:drawable/arrow_up_float"/>
 
         <TextView
             android:id="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/goalImage"
+            android:layout_alignParentBottom="false"
             android:layout_margin="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
             tools:text="Balloons"/>
 
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem"
-        tools:text="1"/>
-
-    <TextView
         android:id="@+id/goalCompletion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="TextView"/>
+        android:layout_margin="@dimen/text_margin"
+        tools:text="$230 of 1900"/>
 
 </LinearLayout>

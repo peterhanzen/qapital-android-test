@@ -12,20 +12,11 @@ public class QapSavingsGoal {
     private int userId;
     private String name;
     private String goalImageURL;
-    // TODO: optional
-    private double targetAmount;
-    private double currentBalance;
-    // TODO: ?
+    private int targetAmount;
+    private int currentBalance;
     private List<Integer> created;
     private QapStatus status;
-    // TODO: optional
-    // TODO: @SerializedName
-//    private List<Integer> connectedUserIds;
     private List<Integer> connectedUsers;
-
-    public int getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
@@ -33,5 +24,13 @@ public class QapSavingsGoal {
 
     public String getGoalImageURL() {
         return goalImageURL;
+    }
+
+    public int getTargetAmount() {
+        return targetAmount;
+    }
+
+    public int getCurrentBalance() {
+        return currentBalance;
     }
 }

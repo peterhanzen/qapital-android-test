@@ -3,6 +3,7 @@ package com.pha.qapital;
 import android.app.Application;
 
 import com.facebook.stetho.Stetho;
+import com.squareup.picasso.Picasso;
 
 import timber.log.Timber;
 
@@ -16,7 +17,7 @@ public class QapitalApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initTimber();
-        initStetho();
+        initStethoAndPicasso();
     }
 
     private void initTimber() {
@@ -31,9 +32,10 @@ public class QapitalApplication extends Application {
         Timber.wtf("WTF");
     }
 
-    private void initStetho() {
+    private void initStethoAndPicasso() {
         if (BuildConfig.DEBUG) {
             Stetho.initializeWithDefaults(this);
+            Picasso.with(this).setLoggingEnabled(true);
         }
     }
 

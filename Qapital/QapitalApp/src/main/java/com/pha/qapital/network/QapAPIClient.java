@@ -12,6 +12,8 @@ import io.reactivex.schedulers.Schedulers;
 
 public class QapAPIClient {
 
+    // TODO: 2017-12-05 Use proper url and remove
+//    private static final String ENDPOINT = "http://qapital-ios-testtask.herokuapp.com/";
     private static final String ENDPOINT = "http://10.0.2.2:8080";
 
     private static QapAPIInterface apiInterface = null;
