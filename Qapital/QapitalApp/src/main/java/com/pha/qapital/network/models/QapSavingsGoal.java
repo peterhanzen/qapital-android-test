@@ -8,26 +8,30 @@ import java.util.List;
 
 public class QapSavingsGoal {
 
-    private String goalImageURL;
+    private int id;
     private int userId;
+    private String name;
+    private String goalImageURL;
     // TODO: optional
     private double targetAmount;
     private double currentBalance;
     // TODO: ?
     private List<Integer> created;
     private QapStatus status;
-    private String name;
-    private int id;
     // TODO: optional
     // TODO: @SerializedName
 //    private List<Integer> connectedUserIds;
     private List<Integer> connectedUsers;
 
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
 
-    public int getId() {
-        return id;
+    public String getGoalImageURL() {
+        return goalImageURL;
     }
 }
