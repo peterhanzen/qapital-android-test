@@ -39,9 +39,7 @@ public class SavingsGoalsViewAdapter extends RecyclerView.Adapter<SavingsGoalsVi
 
         Picasso
                 .with(context)
-                // TODO: 2017-12-05 Use proper url and remove
-                .load("http://i.imgur.com/DvpvklR.png")
-//                .load(holder.savingsGoal.getGoalImageURL())
+                .load(savingsGoal.getGoalImageURL())
                 .fit()
                 .into(holder.goalImage);
 
