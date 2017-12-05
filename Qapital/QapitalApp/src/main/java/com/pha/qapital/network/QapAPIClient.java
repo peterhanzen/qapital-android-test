@@ -32,7 +32,7 @@ public class QapAPIClient {
         apiInterface = ServiceFactory.createRetrofitService(QapAPIInterface.class, ENDPOINT);
     }
 
-    public static void getSavingsGoals(final QapAPICallback<QapSavingsGoalsWrapper> callback) {
+    public void getSavingsGoals(final QapAPICallback<QapSavingsGoalsWrapper> callback) {
 
         apiInterface
                 .getSavingsGoals()

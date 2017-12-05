@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.pha.qapital.R;
 import com.pha.qapital.network.models.QapSavingsGoal;
 
+import timber.log.Timber;
+
 /**
  * Created by pha on 2017-12-02.
  */
@@ -19,7 +21,8 @@ public class MainActivity extends AppCompatActivity implements SavingsGoalsFragm
     }
 
     @Override
-    public void onListFragmentInteraction(QapSavingsGoal item) {
+    public void onListFragmentInteraction(QapSavingsGoal savingsGoal) {
+        Timber.d("Item clicked: " + savingsGoal.getName());
     }
 
 }

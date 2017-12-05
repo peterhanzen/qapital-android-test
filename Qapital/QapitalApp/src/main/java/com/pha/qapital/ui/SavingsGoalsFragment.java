@@ -13,9 +13,6 @@ import com.pha.qapital.R;
 import com.pha.qapital.network.QapAPIClient;
 import com.pha.qapital.network.models.QapSavingsGoal;
 import com.pha.qapital.network.models.wrappers.QapSavingsGoalsWrapper;
-import com.pha.qapital.util.JsonUtil;
-
-import java.util.List;
 
 /**
  * Created by pha on 2017-12-03.
@@ -25,29 +22,7 @@ public class SavingsGoalsFragment extends Fragment {
 
     private static final String TAG = SavingsGoalsFragment.class.getName();
 
-    private OnListFragmentInteractionListener mListener;
-    private List<QapSavingsGoal> savingsGoals;
-
-    public SavingsGoalsFragment() {}
-
-    // TODO: ...
-    public static SavingsGoalsFragment newInstance(List<QapSavingsGoal> savingsGoals) {
-        SavingsGoalsFragment fragment = new SavingsGoalsFragment();
-        Bundle args = new Bundle();
-        args.putString(TAG, JsonUtil.toJsonString(savingsGoals));
-        fragment.setArguments(args);
-
-        fragment.savingsGoals = savingsGoals;
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            savingsGoals = JsonUtil.fromJsonString(getArguments().getString(TAG), savingsGoals.getClass());
-        }
-    }
+    private OnListFragmentInteractionListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,9 +30,8 @@ public class SavingsGoalsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_savings_goals_list, container, false);
 
         if (view instanceof RecyclerView) {
-            Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
             getSavingsGoals(recyclerView);
         }
 
@@ -68,17 +42,17 @@ public class SavingsGoalsFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mListener = (OnListFragmentInteractionListener) context;
+        listener = (OnListFragmentInteractionListener) context;
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        listener = null;
     }
 
     public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(QapSavingsGoal item);
+        void onListFragmentInteraction(QapSavingsGoal savingsGoal);
     }
 
     private void getSavingsGoals(final RecyclerView recyclerView) {
@@ -86,7 +60,7 @@ public class SavingsGoalsFragment extends Fragment {
         QapAPIClient.getInstance().getSavingsGoals(new QapAPIClient.QapAPICallback<QapSavingsGoalsWrapper>() {
             @Override
             public void onSuccess(QapSavingsGoalsWrapper response) {
-                recyclerView.setAdapter(new SavingsGoalsViewAdapter(response.savingsGoals, mListener));
+                recyclerView.setAdapter(new SavingsGoalsViewAdapter(response.savingsGoals, listener));
             }
         });
     }

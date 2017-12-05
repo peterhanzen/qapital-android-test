@@ -13,16 +13,16 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/goalImage"
+            android:id="@+id/savingsGoalImage"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             app:srcCompat="@android:drawable/arrow_up_float"/>
 
         <TextView
-            android:id="@+id/content"
+            android:id="@+id/savingsGoalName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/goalImage"
+            android:layout_alignBottom="@+id/savingsGoalImage"
             android:layout_alignParentBottom="false"
             android:layout_margin="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem"
@@ -33,10 +33,11 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/goalCompletion"
+        android:id="@+id/savingsGoalCompletion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
+        android:textColor="@android:color/black"
         tools:text="$230 of 1900"/>
 
 </LinearLayout>

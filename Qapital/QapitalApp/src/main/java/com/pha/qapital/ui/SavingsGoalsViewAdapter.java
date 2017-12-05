@@ -35,27 +35,25 @@ public class SavingsGoalsViewAdapter extends RecyclerView.Adapter<SavingsGoalsVi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        // TODO: 2017-12-05 Remove? Set elsewhere or remove entirely?
-        holder.mItem = savingsGoals.get(position);
+        final QapSavingsGoal savingsGoal = savingsGoals.get(position);
 
         Picasso
                 .with(context)
                 // TODO: 2017-12-05 Use proper url and remove
                 .load("http://i.imgur.com/DvpvklR.png")
-//                .load(holder.mItem.getGoalImageURL())
-                // TODO: 2017-12-05 centerCrop() and centerInsideI() don't work, but might be better?
+//                .load(holder.savingsGoal.getGoalImageURL())
                 .fit()
-                .into(holder.mGoalImage);
+                .into(holder.goalImage);
 
 
-        holder.mContentView.setText(savingsGoals.get(position).getName());
-        holder.mgoalCompletion.setText(getGoalCompletionString(savingsGoals.get(position)));
+        holder.goalName.setText(savingsGoal.getName());
+        holder.goalCompletion.setText(getGoalCompletionString(savingsGoal));
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+        holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listener != null) {
-                    listener.onListFragmentInteraction(holder.mItem);
+                    listener.onListFragmentInteraction(savingsGoal);
                 }
             }
         });
@@ -78,24 +76,22 @@ public class SavingsGoalsViewAdapter extends RecyclerView.Adapter<SavingsGoalsVi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final ImageView mGoalImage;
-        public final TextView mContentView;
-        public final TextView mgoalCompletion;
-        // TODO: 2017-12-05 Remove?
-        public QapSavingsGoal mItem;
+        public final View view;
+        public final ImageView goalImage;
+        public final TextView goalName;
+        public final TextView goalCompletion;
 
         public ViewHolder(View view) {
             super(view);
-            mView = view;
-            mGoalImage = (ImageView) view.findViewById(R.id.goalImage);
-            mgoalCompletion = (TextView) view.findViewById(R.id.goalCompletion);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            this.view = view;
+            goalImage = (ImageView) view.findViewById(R.id.savingsGoalImage);
+            goalCompletion = (TextView) view.findViewById(R.id.savingsGoalCompletion);
+            goalName = (TextView) view.findViewById(R.id.savingsGoalName);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + goalName.getText() + "'";
         }
     }
 }

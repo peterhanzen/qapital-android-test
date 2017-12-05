@@ -1,11 +1,12 @@
 package com.pha.qapital.network.models
 
 import com.google.gson.Gson
+import spock.lang.Specification
 
 /**
  * Created by pha on 2017-12-03.
  */
-class QapStatusTest extends spock.lang.Specification {
+class QapStatusTest extends Specification {
 
     def '"active" should be deserialized as ACTIVE'() {
 
@@ -17,7 +18,7 @@ class QapStatusTest extends spock.lang.Specification {
         def result = (new Gson()).fromJson(string, QapStatus.class)
 
         then:
-        result.equals(expected);
+        result == expected
 
     }
 
@@ -31,7 +32,7 @@ class QapStatusTest extends spock.lang.Specification {
         def result = (new Gson()).fromJson(string, QapStatus.class)
 
         then:
-        result.equals(expected);
+        result == expected
 
     }
 
@@ -45,7 +46,7 @@ class QapStatusTest extends spock.lang.Specification {
         def result = (new Gson()).toJson(status)
 
         then:
-        result.equals(expected)
+        result == expected
 
     }
 
@@ -59,7 +60,7 @@ class QapStatusTest extends spock.lang.Specification {
         def result = (new Gson()).toJson(status)
 
         then:
-        result.equals(expected)
+        result == expected
 
     }
 
