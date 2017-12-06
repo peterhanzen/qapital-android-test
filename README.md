@@ -1,6 +1,6 @@
-#Qapital Android Test Task
+# Qapital Android Test Task
 
-###Libraries used in the project
+### Libraries used in the project
 
 * [Retrofit](http://square.github.io/retrofit) Turning the HTTP API into a Java interface
 * [OkHttp](http://square.github.io/okhttp) Efficient and reliable HTTP networking
@@ -12,17 +12,19 @@
 * [RxJava](https://github.com/ReactiveX/RxJava) For asynchronous and event-based applications
 
 
-###Running the app
+### Running the app
 
 * cd ?
-* git clone ...
+* git clone -b develop https://github.com/peterhanzen/qapital-android-test.git
 * cd qapital-android-test/Qapital
-* git checkout develop
+* export ANDROID_HOME=~/Library/Android/sdk/ (Or where you have your Android sdk)
 * ``` ./gradlew clean build```
 * _Start your emulator or connect phone_
 * adb install QapitalApp/build/outputs/apk/debug/QapitalApp-debug.apk
 
-###Completion
+Should work? Or peter.hanzen@gmail.com or 070 427 77 87
+
+### Completion
 
 I got the task on Friday, and as earlier mentioned to Örjan, I have my daughter (3 yrs) this week, so time is
 a bit limited. Might be able to finish something later in the week, not sure. For this reason, I haven't
